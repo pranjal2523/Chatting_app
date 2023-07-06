@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<style>
+    body {
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .card {
+        width: 350px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        background-color: #ebebeb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .form-group button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .form-group button:hover {
+        background-color: #0056b3;
+    }
+    #id_dob{
+        width: 20vw;
+    }
+    #id_phone{
+        width: 20vw;
+    }
+    #id_gender{
+        width: 20vw;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="card">
+    
+    {% if messages %}
+        {% for message in messages %}
+            <center><h4 style="color: aqua;">{{message}}</h4></center>
+        {% endfor %}
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <h4>New Registration</h4>
+            <hr/>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="id_name" name="name" maxlength="60" placeholder="Name" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" id="password" name="password"  minlength="6" maxlength="10"  placeholder="Password" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="date" id="id_dob" name="dob" max="{{ today }}" placeholder="Date of Birth" required><br>
+        </div>
+        
+        <div class="form-group">
+            <input type="tel" id="id_phone" name="phone" pattern="[0-9]{1,10}" placeholder="Contact Number" required><br>
+        </div>
+        
+        <div class="form-group">
+
+            <label for="id_gender">Gender:</label>
+            <select id="id_gender" name="gender" required>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="O">Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>  
+    </form>
+    <div>
+        <center><p>Have an account <a href="{% url 'login_user' %}"><b>Login</b></a></p></center>
+    </div>
+</div>
+  </form>
+{% endblock %}
