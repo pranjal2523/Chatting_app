@@ -15,7 +15,7 @@
   ![](https://github.com/pranjal2523/Chatting_app/blob/master/screenshots/validation.png)<br/>
   ![](https://github.com/pranjal2523/Chatting_app/blob/master/screenshots/validation2.png)
     
-# successfull user creation
+#  After registration it redirect to login page and show successfull user creation
   ![](https://github.com/pranjal2523/Chatting_app/blob/master/screenshots/succesfull_user_creation.png)
   
 # Successfull user logging out
